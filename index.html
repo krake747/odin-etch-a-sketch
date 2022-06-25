@@ -10,8 +10,12 @@
   <body>
     <h1>Etch-a-Sketch</h1>
     <h2>Get to drawing!</h2>
-    <button id="reset" type="button">Reset</button>
-    <div class="grid" id="grid"></div>
+    <div id="settings" class="container">
+      <button id="reset-btn" type="button">Reset</button>
+      <input id="size-input" type="range" min="1" max="32" value="16"></input>
+      <div id="size-value">16 x 16</div>
+    </div>
+    <div class="grid-container" id="grid"></div>
   </body>
   <script src="javascript.js"></script>
 </html>

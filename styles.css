@@ -2,6 +2,7 @@
     --grid-height: 640px;
     --grid-width: 640px;
 }
+
 body {
     display: flex;
     justify-content: center;
@@ -9,14 +10,14 @@ body {
     flex-direction: column;
 }
 
-.grid {
+.grid-container {
     display: grid;
     margin: auto;
     height: var(--grid-height);
     width: var(--grid-width);
 }
 
-.grid > .box {
+.grid-container  > .box {
     border: 1px solid black;
     background-color: lightpink;
     box-sizing: border-box;

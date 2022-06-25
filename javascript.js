@@ -1,40 +1,54 @@
+// Constant variables
 const DEFAULT_SIZE = 16;
 
-const grid = document.querySelector(".grid");
-const resetBtn = document.querySelector('#reset');
+// Variables
+let currentSize = DEFAULT_SIZE;
 
-function setupGrid(size) {
-    let gridArea = size * size;
-    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+// HTML+CSS Selectors
+const grid = document.getElementById("grid");
+const resetBtn = document.getElementById("reset-btn");
+const sizeInput = document.getElementById("size-input");
+const sizeValue = document.getElementById("size-value");
+
+// Functions
+let setCurrentSize = (newSize) => currentSize = newSize;
+let updateSizeValue = (value) => sizeValue.innerHTML = `${value} x ${value}`;
+
+let setupGrid = (value) => {
+    let gridArea = value * value;
+    grid.style.gridTemplateColumns = `repeat(${value}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${value}, 1fr)`;
 
     for (let i = 0; i < gridArea; i++) {
-        const boxDiv = document.createElement("div");
-        boxDiv.classList.add("box");
-        grid.appendChild(boxDiv);
+        const div = document.createElement("div");
+        div.classList.add("box");
+        grid.appendChild(div);
     };
 
-    onMouseOverBox();
-};
-
-function onMouseOverBox() {
     const boxes = document.querySelectorAll(".box");
-    boxes.forEach(box => box.addEventListener("mouseover", () =>
-        box.style.backgroundColor = "yellow")
-    );
+    boxes.forEach(box => box.onmouseover = () => box.style.backgroundColor = "yellow");
 };
 
-function resetGrid(size) {
-    grid.innerHTML = "";
-    setupGrid(size);
+let updateGrid = (value) => {
+    setCurrentSize(value);
+    updateSizeValue(value);
+    resetGrid();
 };
+let clearGrid = () => grid.innerHTML = "";
+let resetGrid = () => {
+    clearGrid();
+    setupGrid(currentSize);
+};
+
+// Event Functions
+resetBtn.onclick = () => resetGrid();
+sizeInput.onmousemove = (e) => updateSizeValue(e.target.value);
+sizeInput.onchange = (e) => updateGrid(e.target.value);
 
 // Main
 window.onload = () => {
     setupGrid(DEFAULT_SIZE);
 };
-
-resetBtn.addEventListener("click", () => resetGrid(DEFAULT_SIZE));
 
 
 
