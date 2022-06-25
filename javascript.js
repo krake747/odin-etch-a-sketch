@@ -1,6 +1,6 @@
 // Constant variables
 const DEFAULT_SIZE = 16;
-const DEFAULT_COLOR = "green";
+const DEFAULT_COLOR = "black";
 
 // Variables
 let currentSize = DEFAULT_SIZE;
