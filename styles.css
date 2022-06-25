@@ -19,7 +19,14 @@ body {
 
 .grid-container  > .box {
     border: 1px solid black;
-    background-color: lightpink;
+    background-color: white;
     box-sizing: border-box;
+}
+
+#settings {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
 }
 
